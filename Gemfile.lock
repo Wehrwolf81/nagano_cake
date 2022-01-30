@@ -64,6 +64,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    enum_help (0.0.18)
+      activesupport (>= 3.0.0)
     erubis (2.7.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -193,6 +195,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  enum_help
   font-awesome-sass (~> 5.13)
   jbuilder (~> 2.5)
   jquery-rails
