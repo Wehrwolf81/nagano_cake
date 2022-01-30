@@ -5,12 +5,16 @@
     <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
   </div>
   <h4>商品名</h4>
-  <%= f.text_field :name %>
+  <%= f.text_field :name,include_blank: "商品名"  %>
   <h4>商品説明</h4>
-  <%= f.text_area :introduction %>
+  <%= f.text_area :introduction,include_blank: "ここに説明文を記述します" %>
   <h4>ジャンル</h4>
+  <%= f.collection_select :genre_id, genre.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
   <%= f.text_area :genre_id %>
   <h4>税抜価格</h4>
   <%= f.text_area :price %>
+  <h4>販売ステータス</h4>
+  <%= form.radio_button :is_active, :販売中,checked: true %>
+  <%= form.radio_button :is_active, :販売停止中 %>
   <%= f.submit '新規登録' %>
 <% end %>

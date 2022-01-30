@@ -15,4 +15,11 @@ def edit
 end  
 
 def update
+  @genre = Genre.find(params[:id])
+  if @genre.update(customer_params)
+  redirect_to genres_path(@genre.id),notice:'You have updeted user successfully.'
+  else
+  flash.now[:alert]='update error'
+  render :edit
+  end
 end  
