@@ -1,0 +1,13 @@
+<h2>配送先編集</h2>
+<%= form_with model:@address, local:true do |f| %>
+  <div class="form-group">
+  <h4>郵便番号</h4>
+  <%= f.text_field :potal_code,autofocus: true %>
+  <h4>住所</h4>
+  <%= f.text_field :address, autofocus: true %>
+  <h4>宛名</h4>
+  <%= f.text_field :last_name,:first_name %>
+  <div class="btn btn-secondary">
+   <%= f.submit "変更内容を保存" %>
+  </div>
+  

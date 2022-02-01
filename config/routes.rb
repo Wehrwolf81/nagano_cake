@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # resources :admin/orders
   # resources :public/homes
   # resources :public/customers
+  # resources :public/addresses
+  # resources :public/oders
   
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
