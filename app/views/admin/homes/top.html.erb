@@ -14,7 +14,7 @@
  <tbody>
   <tr>
     <span>
-      <%= customer., _path(customer.id) %>
+      <%= customer.created_at,order_path(customer.id) %>
     </span>
    <td><%= customer.customer_id %></td>
    <td><%= customer.amount %></td>
@@ -23,3 +23,5 @@
  </tbody>
 </table>
 <% end %>
+
+<%= paginate @cus %>

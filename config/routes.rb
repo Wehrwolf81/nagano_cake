@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
-  
+  root to:'admin/homes#top'
   devise_for :customers
   devise_for :admins
-  root to: 'admin/homes#top'
+ 
   # resources :admin/homes
   # resources :admin/customers
   # resources :admin/genres, only: [:index, :create, :edit, :update]
