@@ -11,6 +11,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+  　@order = current_customer.orders.new(order_params)
+　　@order.save
   end
   
   def index
