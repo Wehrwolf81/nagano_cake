@@ -23,7 +23,7 @@
   <strong><%= item.name %></strong>
   <%= item.introduction%>
   <%= item.price %>
-　<%= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+　<%= f.collection_select :amount, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
   <div class="btn btn-secondary">
    <%= f.submit "カートに入れる" %>
   </div>

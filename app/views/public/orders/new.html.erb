@@ -1,0 +1,5 @@
+<h1>支払方法</h1>
+<%= form_with(model: user, local: true) do |form| %>
+  <%= form.radio_button :gender, :male,checked: true %>
+  <%= form.radio_button :gender, :female %>
+<% end %>

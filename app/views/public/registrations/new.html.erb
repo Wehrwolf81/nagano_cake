@@ -1,0 +1,16 @@
+<h1>新規登録</h1>
+
+<div>
+ <%= form_with model:@new_registration, local:true do |f| %>
+
+  
+  <p>名前：<%= f.text_field :last_name,:first_name, autofocus: true %></p>
+  <p>フリガナ：<%= f.text_field :last_name_kana,:first_name_kana %></p>
+  <p>メールアドレス：<%= post_image.caption %></p>
+  <p>郵便番号(ハイフンなし)：<%= f.text_field :postal_code %>></p>
+  <p>住所：<%= f.text_area :address%></p>
+  <p>電話番号(ハイフンなし)：<%= f.text_area :telephon_number %></p>
+  <p>パスワード(6文字以上)：<%= f.text_field :encrypted_password %></p>
+  <p>パスワード(確認用)：<%= f.text_field :encrypted_password %></p>
+</div>
+<% end %>
