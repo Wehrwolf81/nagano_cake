@@ -1,24 +1,13 @@
-<h1></h1>
+<h1>会員詳細</h1>
+  <p>会員ID：<%= @customer.id %></p>
+  <p>氏名：<%= @customer.first_name %></p>
+  <p>フリガナ：<%= @customer.first_name_kana %></p>
+  <p>郵便番号：<%= @customer.postal_code %></p>
+  <p>住所：<%= @customer.address %></p>
+  <p>電話番号：<%= @customer.telephone_number %></p>
+  <p>メールアドレス：<%= @customer.email %></p>
+  <p>会員ステータス：<%#= @customer.is_active %></p>
 
-<% @customer.each do |customer| %>
-  <h4>会員ID</h4>
-  <%= customer.id %>
-  <h4>氏名</h4>
-  <%= customer.last_name %>
-  <%= customer.first_name %>
-  <h4>フリガナ</h4>
-  <%= customer.last_name_kana %>
-  <%= customer.first_name_kana %>
-  <h4>郵便番号</h4>
-  <%= customer.postal_code %>
-  <h4>住所</h4>
-  <%= customer.address %>
-  <h4>電話番号</h4>
-  <%= customer.telephone_number %>
-  <h4>メールアドレス</h4>
-  <%= customer.email %>
-  <h4>会員ステータス</h4>
-  <%= customer.is_deleted %>
-  <%= link_to "編集", book_path(book.id) %>
-  <%= link_to "注文履歴一覧を", book_path(book.id) %>
-<% end %>
+
+  <%= link_to "編集", edit_admin_customer_path(@customer.id) %>
+  <%= link_to "注文履歴一覧を見る", admin_top_path %>

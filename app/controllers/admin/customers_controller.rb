@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers=Custome.all
+    @customers=Customer.all
   end
 
   def show
