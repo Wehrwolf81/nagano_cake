@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
 
-  devise_for :admins
+  devise_for :admins,controllers: {
+    sessions: 'admins/sessions'
+  }
+  
   devise_for :customers
   root to:'public/homes#top'
 
@@ -9,6 +12,8 @@ Rails.application.routes.draw do
     resources :homes
     get'homes/about'=>'homes#about'
     resources :customers
+    get '/customers/:id/comfirm' => 'customers#confirm', as: 'confirm'
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :addresses
     resources :orders
     resources :items

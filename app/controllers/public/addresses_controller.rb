@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
   def index
-    @new_addresse=Addresse.new
-    @addresses=Addresse.all
+    @new_address=Address.new
+    @addresses=Address.all
   end
   
   def edit
@@ -9,7 +9,7 @@ class Public::AddressesController < ApplicationController
   end
   
   def create
-    @new_addresse=Address.new(address_params)
+    @new_address=Address.new(address_params)
     if @new_address.save
     redirect_to address_path,notice:'Book was successfully created.'
     else
@@ -33,3 +33,8 @@ class Public::AddressesController < ApplicationController
     redirect_to address_path, notice:'Book was successfully destroyed'
   end
 end
+
+ private
+  def address_params
+    params.require(:address).permit(:id, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address)
+  end

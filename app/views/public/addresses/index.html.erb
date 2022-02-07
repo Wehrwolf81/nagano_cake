@@ -1,31 +1,32 @@
-<h2>配送先登録/一</h2>
-<%= form_with model:@new_address, local:true do |f| %>
+<h2>配送先登録</h2>
+<%#= form_tag model:@new_address, local:true do |f| %>
+<%= form_for @new_address, url: public_addresses_path do |f| %>
   <div class="form-group">
   <h4>郵便番号</h4>
-  <%= f.text_field :potal_code,autofocus: true %>
+  <%= f.text_field :postal_code,autofocus: true %>
   <h4>住所</h4>
   <%= f.text_field :address, autofocus: true %>
   <h4>宛名</h4>
-  <%= f.text_field :last_name,:first_name %>
+  <%#= f.text_field :first_name %>
+  <%#= f.text_field :last_name %>
   <div class="btn btn-secondary">
    <%= f.submit "新規登録" %>
   </div>
-  
-  <div class="container">
-   <div class="col-md-8 offset-md-1">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-         <th></th>
-         <th>郵便番号</th>
-         <th>住所</th>
-         <th>住所</th>
-         <th>宛名</th>
-         <th></th>
-         <th colspan="3"></th>
-        </tr>
-      </thead>
+<% end %>
 
+<div class="container">
+ <div class="col-md-8 offset-md-1">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+       <th></th>
+       <th>郵便番号</th>
+       <th>住所</th>
+       <th>宛名</th>
+       <th></th>
+       <th colspan="3"></th>
+      </tr>
+    </thead>
     <tbody>
       <% @addresses.each do |address| %>
         <tr>
@@ -34,12 +35,10 @@
           <td><%= address.name %></td>
           <td><%= link_to '編集する', edit_address_path(@address),class: 'btn btn-default' %></td>
           <td><%= link_to '削除する', address_path, class: 'btn btn-default' ,method: :delete, data: { confirm: '本当に消しますか?' } %></td>
-
         </tr>
       <% end %>
     </tbody>
   </table>
-  </div>
  </div>
 </div>
-  
+
