@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   devise_for :admins,controllers: {
     sessions: 'admins/sessions'
   }
-  # root to:'admin/homes#top'
+  root to:'admin/homes#top'
   
   devise_for :customers
   root to:'public/homes#top'
+  
 
   namespace :public do
     resources :homes

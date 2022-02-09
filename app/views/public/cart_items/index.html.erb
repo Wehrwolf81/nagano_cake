@@ -19,9 +19,12 @@
           <%= attachment_image_tag item, :image_id, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
           <%= item_id.name%>
           </td>
-          <td><%= order.price%></td>
+          <td><%= (cart_item.item.price * 1.1).floor %></td>
+
           <td><%= order.amount %></td>
           <td><%= order.total_payment %></td>
+          <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
+          <% @合計金額 +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
           <td><%= order.status %></td>
           <td><%= link_to '削除する', cart_item_path, class: 'btn btn-default' ,method: :delete, data: { confirm: '本当に消しますか?' } %></td>
 

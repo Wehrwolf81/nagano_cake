@@ -1,13 +1,21 @@
 class Admin::GenresController < ApplicationController
-end
+
 
 def index
   @genres=Genre.all
   @new_genre=Genre.new
+  @genre = Genre.find(params[:id])
 end
 
 def create
-  @new_genre=Genre.new
+  @new_genre=Genre.new(genre_params)
+  if @new_genre.save
+  redirect_to admin_genres_path,notice:'You have updeted user successfully.'
+  else
+  flash.now[:alert]='create error'
+  @genres=Genre.all
+  render :index
+  end
 end
 
 def edit
@@ -16,7 +24,7 @@ end
 
 def update
   @genre = Genre.find(params[:id])
-  if @genre.update(customer_params)
+  if @genre.update(genre_params)
   redirect_to genres_path(@genre.id),notice:'You have updeted user successfully.'
   else
   flash.now[:alert]='update error'
@@ -24,7 +32,9 @@ def update
   end
 end
 
-   private
+  private
   def genre_params
     params.require(:genre).permit(:name)
   end
+
+end

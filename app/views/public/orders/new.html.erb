@@ -1,5 +1,10 @@
 <h1>支払方法</h1>
-<%= form_with(model: user, local: true) do |form| %>
-  <%= form.radio_button :gender, :male,checked: true %>
-  <%= form.radio_button :gender, :female %>
+<%= form_for(@) do |form| %>
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method, "クレジットカード" %>
+
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method, "銀行振込" %>
+
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full) %>
 <% end %>

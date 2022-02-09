@@ -30,3 +30,8 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path, notice:'Book was successfully destroyed'
   end
 end
+
+  # private
+  # def item_params
+  #   params.require(:item).permit(:, )
+  # end
