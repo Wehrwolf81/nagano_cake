@@ -15,7 +15,7 @@
     <% end %>
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
-          <%= link_to 'Logo', root_path, class: 'navbar-brand text-light' %>
+          <%= link_to 'Logo', admin_root_path, class: 'navbar-brand text-light' %>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
             <% if admin_signed_in? %>
               <%= link_to '商品一覧',admin_items_path %>
               <%= link_to '会員一覧 ', admin_customers_path %>
-              <%= link_to '注文履歴一覧', admin_top_path %>
+              <%= link_to '注文履歴一覧', admin_root_path %>
               <%= link_to 'ジャンル一覧', admin_genres_path %>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             <% else %>

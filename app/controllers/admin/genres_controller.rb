@@ -4,7 +4,7 @@ class Admin::GenresController < ApplicationController
 def index
   @genres=Genre.all
   @new_genre=Genre.new
-  @genre = Genre.find(params[:id])
+
 end
 
 def create
@@ -25,7 +25,7 @@ end
 def update
   @genre = Genre.find(params[:id])
   if @genre.update(genre_params)
-  redirect_to genres_path(@genre.id),notice:'You have updeted user successfully.'
+  redirect_to admin_genres_path,notice:'You have updeted user successfully.'
   else
   flash.now[:alert]='update error'
   render :edit

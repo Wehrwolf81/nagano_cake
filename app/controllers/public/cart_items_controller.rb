@@ -25,8 +25,8 @@ class Public::CartItemsController < ApplicationController
   end
   
   def all_destroy
-    @cart_items=Cart_item.find(params[:id])
-    @cart_items.destroy
+    @cart_items=Cart_item.all
+    @cart_items.destroy_all
     redirect_to cart_items_path, notice:'Book was successfully destroyed'
   end
 end

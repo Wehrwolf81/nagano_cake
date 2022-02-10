@@ -4,14 +4,12 @@ Rails.application.routes.draw do
   devise_for :admins,controllers: {
     sessions: 'admins/sessions'
   }
-  root to:'admin/homes#top'
-  
-  devise_for :customers
-  root to:'public/homes#top'
-  
 
+  devise_for :customers
+  
   namespace :public do
     resources :homes
+    root to:'homes#top'
     get'homes/about'=>'homes#about'
     resources :customers
     get '/customers/:id/comfirm' => 'customers#confirm', as: 'confirm'
@@ -24,9 +22,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :homes
-    get'top'=>'homes/top'
+    root to:'homes#top'
     resources :customers
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :genres
     resources :items
     resources :orders
   end
