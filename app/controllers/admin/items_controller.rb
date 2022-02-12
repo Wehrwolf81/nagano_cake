@@ -10,7 +10,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @new_item=Item.new(item_params)
     if @new_item.save
-    redirect_to items_path,notice:'Book was successfully created.'
+    redirect_to admin_item_path(@new_item.id)
     else
     render :new
     end
@@ -27,8 +27,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-    redirect_to admin_item_path,notice:'You have updeted user successfully.'
-    else
+    redirect_to admin_item_path(@item.id)
     flash.now[:alert]='update error'
     render :edit
     end

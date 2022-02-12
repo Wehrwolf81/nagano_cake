@@ -1,5 +1,5 @@
 <h1>商品新規登録</h1>
-<%= form_for(@new_item, url: new_admin_item_path) do |f| %>
+<%= form_for(@new_item, url: admin_items_path) do |f| %>
   <div class="form-control-file user_image">
     <label for="inputImage">商品画像</label>
     <%= f.attachment_field :image %>
@@ -9,12 +9,14 @@
   <h4>商品説明</h4>
   <%= f.text_area :introduction,include_blank: "ここに説明文を記述します" %>
   <h4>ジャンル</h4>
-  <%#= f.collection_select :genre_id, genre.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
-  <%= f.text_area :genre_id %>
+  <%#= f.select :genre_id,[["１", "1"], ["２", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"]], include_blank: "選択して下さい" %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
   <h4>税込価格(税抜価格)</h4>
   <%= f.text_area :price %>
   <h4>販売ステータス</h4>
-  <%#= form.radio_button :is_active, :販売中,checked: true %>
-  <%#= form.radio_button :is_active, :販売停止中 %>
+  <%= f.radio_button :is_active, :selling,checked: true %>
+  <%= f.label :gender, "販売中", {value: :selling, style: "display: inline-block;"} %>
+  <%= f.radio_button :is_active, :sold_out %>
+  <%= f.label :gender, "販売停止中", {value: :sold_out, style: "display: inline-block;"} %>
   <%= f.submit '新規登録' %>
 <% end %>
