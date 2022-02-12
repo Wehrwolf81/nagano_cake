@@ -1,8 +1,13 @@
 <h1>支払方法</h1>
 <%= form_for(@) do |form| %>
+<!--Order.payment_methods_i18n[:credit_card]-->
 <%= f.radio_button :payment_method, "credit_card" %>
 <%= f.label :payment_method, "クレジットカード" %>
 
+ <!--<%#= f.label :gender, :man %>-->
+ <!-- <%#= f.radio_button :gender, 1 %>-->
+
+<!--Order.payment_methods_i18n[:transfer]-->
 <%= f.radio_button :payment_method, "transfer" %>
 <%= f.label :payment_method, "銀行振込" %>
 
