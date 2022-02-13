@@ -1,13 +1,16 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items=cart_item.all
+    @cart_items=CartItem.all
+    @totalpayment=0
   end
-  
+
   def create
-    @cart_items.save
-    redirect_to root_path,notice:'Book was successfully created.'
+    @cart_item=CartItem.new(cart_item_params)
+    @cart_item.save
+    # if@cart_item
+    redirect_to public_cart_items_path
   end
-  
+
   def update
     @items = Item.all
     if @item.update(item_params)
@@ -18,12 +21,22 @@ class Public::CartItemsController < ApplicationController
     end
   end
   
+   def update
+    @cart_item = CartItem.find(params[:amount])
+    if @cart_item.update(cart_item_params)
+    redirect_to public_cart_item_path(@cart_item.id),notice:'You have updeted user successfully.'
+    else
+    flash.now[:alert]='update error'
+    render :index
+    end
+   end
+
   def destroy
     @cart_item=Cart_item.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path, notice:'Book was successfully destroyed'
   end
-  
+
   def all_destroy
     @cart_items=Cart_item.all
     @cart_items.destroy_all
@@ -35,3 +48,7 @@ end
   # def item_params
   #   params.require(:item).permit(:, )
   # end
+private
+def cart_item_params
+    params.require(:cart_item).permit(:item_id, :customer_id, :amount)
+end
