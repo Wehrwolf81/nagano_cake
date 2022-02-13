@@ -13,3 +13,10 @@ ja:
         making: '製作中'
         ready_to_ship: '発送準備中'
         delivered: '発送済み'
+
+  ja:
+  enums:
+    item:
+      is_active:
+        selling: '販売中'
+        sold_out: '販売停止中'

@@ -1,15 +1,16 @@
 <h1>支払方法</h1>
-<%= form_for(@) do |form| %>
+<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
 <!--Order.payment_methods_i18n[:credit_card]-->
-<%= f.radio_button :payment_method, "credit_card" %>
-<%= f.label :payment_method, "クレジットカード" %>
-
- <!--<%#= f.label :gender, :man %>-->
- <!-- <%#= f.radio_button :gender, 1 %>-->
-
+<%#= radio_button :payment_method, "credit_card" %>
+<%#= label :payment_method, "クレジットカード" %>
 <!--Order.payment_methods_i18n[:transfer]-->
-<%= f.radio_button :payment_method, "transfer" %>
-<%= f.label :payment_method, "銀行振込" %>
-
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full) %>
-<% end %>
+<%#= f.radio_button :payment_method, "transfer" %>
+<%#= f.label :payment_method, "銀行振込" %>
+<%#= form_for(@addresses, url: public_order_confirm_path(@order.id)) do |f| %>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+<%#= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full) %>
+<%# end %>

@@ -6,41 +6,48 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item=CartItem.new(cart_item_params)
-    @cart_item.save
-    # if@cart_item
+    if current_customer.cart_items.find_by(item_id: @cart_item.item_id).present?
+      cart_item = current_customer.cart_items.find_by(item_id: @cart_item.item_id)
+      total = cart_item.amount + @cart_item.amount.to_i
+      cart_item.update(amount: total)
+
+    else
+      @cart_item.save
+      # flash[:notice] = "商品の個数が変更されました！"
+      # ,notice:'商品が追加されました'
+    end
     redirect_to public_cart_items_path
   end
 
-  def update
-    @items = Item.all
-    if @item.update(item_params)
-    redirect_to new_orders_path,notice:'You have updeted user successfully.'
-    else
-    flash.now[:alert]='update error'
-    render :edit
-    end
-  end
-  
+  # def update
+  #   @items = Item.all
+  #   if @item.update(item_params)
+  #   redirect_to new_orders_path,notice:'You have updeted user successfully.'
+  #   else
+  #   flash.now[:alert]='update error'
+  #   render :edit
+  #   end
+  # end
+
    def update
     @cart_item = CartItem.find(params[:amount])
     if @cart_item.update(cart_item_params)
-    redirect_to public_cart_item_path(@cart_item.id),notice:'You have updeted user successfully.'
+      redirect_to public_cart_items_path
     else
-    flash.now[:alert]='update error'
-    render :index
+      render :index
     end
    end
 
   def destroy
-    @cart_item=Cart_item.find(params[:id])
+    @cart_item=CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to cart_items_path, notice:'Book was successfully destroyed'
+    redirect_to public_cart_items_path
   end
 
   def all_destroy
-    @cart_items=Cart_item.all
+    @cart_items=CartItem.all
     @cart_items.destroy_all
-    redirect_to cart_items_path, notice:'Book was successfully destroyed'
+    redirect_to public_cart_items_path
   end
 end
 
