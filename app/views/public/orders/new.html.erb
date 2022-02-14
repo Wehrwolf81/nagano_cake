@@ -1,16 +1,21 @@
-<h1>支払方法</h1>
+<h2>支払方法</h2>
+<%= form_for @order, url: public_order_confirm_path(@order) do |f| %>
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
 <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
-
 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
 <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
-<!--Order.payment_methods_i18n[:credit_card]-->
-<%#= radio_button :payment_method, "credit_card" %>
-<%#= label :payment_method, "クレジットカード" %>
-<!--Order.payment_methods_i18n[:transfer]-->
-<%#= f.radio_button :payment_method, "transfer" %>
-<%#= f.label :payment_method, "銀行振込" %>
-<%#= form_for(@addresses, url: public_order_confirm_path(@order.id)) do |f| %>
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+<h2>届け先</h2>
+<h5>ご自身の住所</h5>
+<%#= current_customer.full_address %>
+<h5>登録済み住所から選択</h5>
+<%= f.collection_select :address_id, Address.all, :id, :addresses %>
 <%#= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full) %>
-<%# end %>
+
+<% end %>
+<h5>新しいお届け先</h5>
+ <%= form_for (@new_address) do |f| %>
+  <p>郵便番号：<%= f.text_field :postal_code, autofocus: true %></p>
+  <p>住所：<%= f.text_field :full_address %></p>
+  <p>宛名：<%= text_field :full_name %></p>
+  <% submit '確認画面に進む'%>
+<% end %>
