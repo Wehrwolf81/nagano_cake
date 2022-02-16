@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    # @new_address=Address.new
+    @new_address=Address.new
     @addresses=Address.all
     @order=Order.new
     # @order.address_id=current_customer.address.id

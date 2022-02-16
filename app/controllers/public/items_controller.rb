@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
     @genres=Genre.all
-    @items=Item.page(params[:page]).reverse_order
+    @items=Item.page(params[:page]).reverse_order.per(8)
   end
 
   def show
@@ -10,6 +10,6 @@ class Public::ItemsController < ApplicationController
     @item=Item.find(params[:id])
 
   end
-  
- 
+
+
 end

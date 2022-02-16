@@ -1,4 +1,4 @@
-<h1>会員詳細</h1>
+<h1><%= @customer.full_name %>の会員詳細</h1>
   <p>会員ID：<%= @customer.id %></p>
   <p>氏名：<%= @customer.first_name %></p>
   <p>フリガナ：<%= @customer.first_name_kana %></p>
@@ -6,7 +6,7 @@
   <p>住所：<%= @customer.address %></p>
   <p>電話番号：<%= @customer.telephone_number %></p>
   <p>メールアドレス：<%= @customer.email %></p>
-  <p>会員ステータス：<%#= @customer.is_active %></p>
+  <p>会員ステータス：<%= @customer.is_deleted %></p>
 
 
   <%= link_to "編集", edit_admin_customer_path(@customer.id) %>

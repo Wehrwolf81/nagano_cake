@@ -8,14 +8,17 @@
 <h5>ご自身の住所</h5>
 <%#= current_customer.full_address %>
 <h5>登録済み住所から選択</h5>
-<%= f.collection_select :address_id, Address.all, :id, :addresses %>
+<%= f.collection_select :address, Address.all, :id, :addresses %>
 <%#= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full) %>
 
-<% end %>
-<h5>新しいお届け先</h5>
- <%= form_for (@new_address) do |f| %>
-  <p>郵便番号：<%= f.text_field :postal_code, autofocus: true %></p>
-  <p>住所：<%= f.text_field :full_address %></p>
-  <p>宛名：<%= text_field :full_name %></p>
+
+   <h5>新しいお届け先</h5>
+    <%= form_for @new_address, url: new_public_order_path do |f| %>
+     <p>郵便番号：<%= f.text_field :postal_code, autofocus: true %></p>
+     <p>住所：<%= f.text_field :full_address %></p>
+     <p>宛名：<%= text_field :full_name %></p>
+    <% end %>
   <% submit '確認画面に進む'%>
-<% end %>
+ <% end %>
+
+

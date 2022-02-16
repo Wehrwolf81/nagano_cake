@@ -14,11 +14,15 @@
   <h4>税抜価格</h4>
   <%= f.text_area :price %>
   <h4>販売ステータス</h4>
-  <%= f.radio_button :is_active, Item.is_actives.key(0) %>
-  <%= f.label :is_active, Item.is_actives.i18n[:selling] %>
+  <%= f.radio_button :is_active, :selling,checked: true %>
+  <%= f.label :is_active, "販売中", {value: :selling, style: "display: inline-block;"} %>
+  <%= f.radio_button :is_active, :sold_out %>
+  <%= f.label :is_active, "販売停止中", {value: :sold_out, style: "display: inline-block;"} %>
+  <%#= f.radio_button :is_active, Item.is_actives.key(0) %>
+  <%#= f.label :is_active, Item.is_actives.i18n[:selling] %>
 
-  <%= f.radio_button :is_active, Item.is_actives.key(1) %>
-  <%= f.label :is_active, Item.is_actives_i18n[:sold_out]%>
+  <%#= f.radio_button :is_active, Item.is_actives.key(1) %>
+  <%#= f.label :is_active, Item.is_actives_i18n[:sold_out]%>
 
   <%#= f.label :is_active %><br />
   <%#= f.label :selling %>

@@ -14,7 +14,8 @@
             <td><%= genre.name %></td>
           </tr>
       <% end %>
-    </tbody>
+      </tbody>
+      </table>
     </div>
      <!--<button type="button" class="btn btn-outline-secondary btn-block">-->
      <!-- <%#= link_to admin_item_path do %>-->
@@ -23,15 +24,15 @@
      <!-- <%#  end %>-->
     </button>
 
-    <div class="col-md-9 ">
+    <div class="col-md- ">
       <% @items.each do |item| %>
       <td>
         <%= link_to public_item_path(item.id) do %>
         <%= attachment_image_tag item, :image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
         <% end %>
+        <%= item.name %>
+        <%= item.price %>
       </td>
-      <%= item.name %>
-      <%= item.price %>
       <% end %>
 
     </div>

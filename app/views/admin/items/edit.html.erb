@@ -14,8 +14,8 @@
   <%= f.text_area :price %>
   <h4>販売ステータス</h4>
   <%= f.radio_button :is_active, :selling,checked: true %>
-  <%= f.label :gender, "販売中", {value: :selling, style: "display: inline-block;"} %>
+  <%= f.label :is_active, "販売中", {value: :selling, style: "display: inline-block;"} %>
   <%= f.radio_button :is_active, :sold_out %>
-  <%= f.label :gender, "販売停止中", {value: :sold_out, style: "display: inline-block;"} %>
+  <%= f.label :is_active, "販売停止中", {value: :sold_out, style: "display: inline-block;"} %>
   <%= f.submit '変更を保存' %>
 <% end %>

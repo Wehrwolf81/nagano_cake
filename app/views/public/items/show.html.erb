@@ -1,7 +1,8 @@
+
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <!--<table class="table table-striped">-->
+      <table class="table table-striped">
       <thead>
         <tr>
          <th>ジャンル名検索</th>
@@ -13,13 +14,9 @@
             <td><%= genre.name %></td>
           </tr>
       <% end %>
-    </tbody>
-      <!--</div>-->
+      </tbody>
+      </table>
     </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
     <div class="col-md-9">
       <%= form_for(@cart_item, url: public_cart_items_path) do |f| %>
         <%= attachment_image_tag @item, :image_id, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
@@ -28,11 +25,9 @@
         <%= @item.price %>
         <%= f.hidden_field :item_id, value: @item.id %>
         <%= f.hidden_field :customer_id, value: current_customer.id %>
-        <%= f.select :amount, *[1..10] %>
+        <%= f.select :amount, *[1..10] , include_blank: "選択して下さい" %>
         <%= f.submit 'カートに入れる' %>
 
         <% end %>
-
     </div>
-  </div>
 </div>
