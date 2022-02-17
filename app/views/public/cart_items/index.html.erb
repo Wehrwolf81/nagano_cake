@@ -20,8 +20,12 @@
           <%= cart_item.item.name%>
           </td>
           <td><%= cart_item.item.with_tax_price%></td>
-          <td><%= cart_item.amount %></td>
-          <%#= cart_item_select :amount, *[1..10] %>
+          <td>
+          <%= form_for cart_item,url: public_cart_item_path(cart_item) do |f| %>
+          <%= f.select :amount, *[1..10] %>
+          <%= f.submit %>
+          <% end %>
+          </td>
           <td><%= cart_item.subtotal%></td>
           <% @totalpayment +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
           <td><%= link_to '削除する', public_cart_item_path(cart_item.id), class: 'btn btn-default' ,method: :delete, data: { confirm: '本当に消しますか?' } %></td>

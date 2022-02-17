@@ -7,8 +7,8 @@
   <h4>住所</h4>
   <%= f.text_field :address, autofocus: true %>
   <h4>宛名</h4>
+  <%= f.text_field :name %>
   <%#= f.text_field :first_name %>
-  <%#= f.text_field :last_name %>
   <div class="btn btn-secondary">
    <%= f.submit "新規登録" %>
   </div>
@@ -19,12 +19,9 @@
   <table class="table table-striped">
     <thead>
       <tr>
-       <th></th>
        <th>郵便番号</th>
        <th>住所</th>
        <th>宛名</th>
-       <th></th>
-       <th colspan="3"></th>
       </tr>
     </thead>
     <tbody>
@@ -33,8 +30,8 @@
           <td><%= address.postal_code %></td>
           <td><%= address.address%></td>
           <td><%= address.name %></td>
-          <td><%= link_to '編集する', edit_address_path(@address),class: 'btn btn-default' %></td>
-          <td><%= link_to '削除する', address_path, class: 'btn btn-default' ,method: :delete, data: { confirm: '本当に消しますか?' } %></td>
+          <td><%= link_to '編集する', edit_public_customer_path(@address),class: 'btn btn-default' %></td>
+          <td><%= link_to '削除する', public_addresses_path, class: 'btn btn-default' ,method: :delete, data: { confirm: '本当に消しますか?' } %></td>
         </tr>
       <% end %>
     </tbody>

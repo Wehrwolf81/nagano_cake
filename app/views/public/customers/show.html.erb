@@ -2,8 +2,8 @@
 
 <p>登録情報 : <%= link_to '編集する', edit_public_customer_path(@customer),class: 'btn btn-default' %></p>
 
-  <p>氏名：<%= @customer.first_name %></p>
-  <p>カナ：<%= @customer.first_name_kana %></p>
+  <p>氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
+  <p>カナ：<%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
   <p>郵便番号：<%= @customer.postal_code %></p>
   <p>住所：<%= @customer.address %></p>
   <p>電話番号：<%= @customer.telephone_number %></p>
