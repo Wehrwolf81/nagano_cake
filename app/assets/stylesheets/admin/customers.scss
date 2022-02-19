@@ -1,3 +1,22 @@
 // Place all the styles related to the Admin/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer_show {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 100px;
+    margin-right: auto;
+    margin-left: auto;
+}

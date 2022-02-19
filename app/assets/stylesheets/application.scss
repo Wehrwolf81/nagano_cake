@@ -17,4 +17,16 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-
+.admin_login,.customer_log_in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+//   flex-wrap: wrap;
+//   margin-right: -15px;
+//   margin-left: -15px;
+    // width: 100%;
+    // padding-right: 100px;
+    // padding-left: 100px;
+    // margin-right: auto;
+    // margin-left: auto;
+}

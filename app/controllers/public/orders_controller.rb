@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order=Order.find(params[:id])
+    @cart_items=current_customer.cart_items.all
 
   end
 

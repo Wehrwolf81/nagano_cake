@@ -1,4 +1,6 @@
-<h1><%= @customer.last_name+@customer.first_name %>の会員詳細</h1>
+<div class=customer_show>
+  
+<h1><%#= @customer.last_name+@customer.first_name %>の会員詳細</h1>
   <p>会員ID：<%= @customer.id %></p>
   <p>氏名：<%= @customer.last_name %><%= @customer.first_name %></p>
   <p>フリガナ：<%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
@@ -7,7 +9,11 @@
   <p>電話番号：<%= @customer.telephone_number %></p>
   <p>メールアドレス：<%= @customer.email %></p>
   <p>会員ステータス：<%= @customer.is_deleted %></p>
+</div>
 
+<div class=buttons>
+  <pre>
+  <%= link_to "編集", edit_admin_customer_path(@customer.id) %>    <%= link_to "注文履歴一覧を見る", admin_root_path %>
 
-  <%= link_to "編集", edit_admin_customer_path(@customer.id) %>
-  <%= link_to "注文履歴一覧を見る", admin_root_path %>
+  </pre>
+</div>

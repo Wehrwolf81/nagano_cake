@@ -1,7 +1,8 @@
 class Public::AddressesController < ApplicationController
   def index
     @new_address=Address.new
-    @addresses=A  ddress.all
+    @addresses=current_customer.addresses.all
+    p @addresses
   end
 
   def edit
@@ -10,6 +11,8 @@ class Public::AddressesController < ApplicationController
 
   def create
     @new_address=Address.new(address_params)
+    @new_address.customer_id=current_customer.id
+    @addresses=current_customer.addresses.all
     if @new_address.save
     redirect_to public_addresses_path
     else
@@ -19,10 +22,9 @@ class Public::AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    if @customer.update(customer_params)
+    if @address.update(address_params)
     redirect_to public_addresses_path
     else
-    flash.now[:alert]='update error'
     render :edit
     end
   end

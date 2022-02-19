@@ -16,7 +16,18 @@
 
 .item_form {
   display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  justify-content: center;
+  align-items: center;
 }
+
+// .col-md-8 {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .btn , .btn-default {
+//     color: #fff;
+//     background-color: #6c757d;
+//     border-color: #6c757d;
+// }

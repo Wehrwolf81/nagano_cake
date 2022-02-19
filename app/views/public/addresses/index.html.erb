@@ -30,7 +30,7 @@
           <td><%= address.postal_code %></td>
           <td><%= address.address%></td>
           <td><%= address.name %></td>
-          <td><%= link_to '編集する', edit_public_customer_path(@address),class: 'btn btn-default' %></td>
+          <td><%= link_to '編集する', edit_public_address_path(address),class: 'btn btn-default' %></td>
           <td><%= link_to '削除する', public_addresses_path, class: 'btn btn-default' ,method: :delete, data: { confirm: '本当に消しますか?' } %></td>
         </tr>
       <% end %>

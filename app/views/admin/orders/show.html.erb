@@ -40,9 +40,9 @@
           <% @totalpayment +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
           <td>
           <%= form_for order,url: admin_order_path(order) do |f| %>
-          <%#= f.select :making_status, Order.statues.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+          <%= f.select :making_status, Order.statues.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
           <%= f.submit %>
-          <% end %> 
+          <% end %>
           </td>
 
         </tr>

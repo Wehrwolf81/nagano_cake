@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     resources :addresses
     resources :orders
-    get'/orders/confirm' =>'orders#confirm',as: 'order_confirm'
+    post'/orders/confirm' =>'orders#confirm',as: 'order_confirm'
     get'/orders/complete' =>'orders#complte',as: 'complte'
     resources :items
     resources :cart_items
