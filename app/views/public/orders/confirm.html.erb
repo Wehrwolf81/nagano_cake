@@ -1,6 +1,8 @@
 <h1>注文情報確認</h1>
+
+
  <div class="container">
-   <div class="col-md-8 offset-md-1">
+  <div class="col-md-8 offset-md-1">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -14,16 +16,31 @@
     <tbody>
       <% @cart_items.each do |cart_item| %>
         <tr>
-          <td><%= cart_item.name%></td>
-          <td><%= cart_item.price%></td>
+          <td><%= cart_item.item.name%></td>
+          <td><%= cart_item.item.price%></td>
           <td><%= cart_item.amount %></td>
           <td><%= cart_item.subtotal%></td>
-          <td><%= link_to '注文を確定する', public_complte_path,class: 'btn btn-default' %></td>
-
+          <% @total += cart_item.subtotal %>
         </tr>
       <% end %>
     </tbody>
-  </table>
-  </div>
+    </table>
+    <div class="col-md-3">
+        <p>送料<%= @order.shipping_cost = 800 %></p>
+        <p>商品合計<%= @total %></p>
+        <p>請求金額<%= @total += @order.shipping_cost %></p>
+
+    </div>
+    <p>支払方法<%= @order.payment_method %></p>
+    <p>お届け先<%= @order.address %></p>
+    <%= form_for @order, url: public_orders_path do |f| %>
+      <%= f.hidden_field :payment_method, value: @order.payment_method %>
+      <%= f.hidden_field :payment_method, value: @order.payment_method %>
+      <%= f.hidden_field :payment_method, value: @order.payment_method %>
+      <%= f.hidden_field :payment_method, value: @order.payment_method %>
+      <!--保存してcreateに渡さなければならないものhidden_fieldにいれる-->
+    <%= f.submit '注文を確定する', class: 'btn btn-default' %>
+    <% end %>
+    </div>
  </div>
 </div>

@@ -15,7 +15,7 @@
 <h5>登録済み住所から選択</h5>
 <%= radio_button_tag :select_address, 1 %>
 <%#= f.collection_select :address, Address.all, :id, :address %>
-<%= f.select :address, options_from_collection_for_select(Address.all, :id, :full_address) %>
+<%= select "address","address_id", options_from_collection_for_select(current_customer.addresses.all, :id, :full_address) %>
 
    <h5>新しいお届け先</h5>
    <%= radio_button_tag :select_address, 2 %>
