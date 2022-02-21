@@ -26,8 +26,8 @@
           <%= f.submit %>
           <% end %>
           </td>
-          <td><%= cart_item.subtotal%></td>
-          <% @totalpayment +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
+          <td><%= cart_item.subtotal.to_i %></td>
+          <% @totalpayment +=  (cart_item.item.price.to_i * 1.1).floor * cart_item.amount.to_i %>
           <td><%= link_to '削除する', public_cart_item_path(cart_item.id), class: 'btn btn-default' ,method: :delete, data: { confirm: '本当に消しますか?' } %></td>
         </tr>
       <% end %>

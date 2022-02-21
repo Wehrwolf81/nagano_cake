@@ -4,9 +4,11 @@ class Public::OrdersController < ApplicationController
     @orders=current_customer.orders.all
   end
 
-  # def show
-  #   @order=Order.find(params[:id])
-  # end
+  def show
+    @order=Order.find(params[:id])
+    @cart_items=current_customer.cart_items
+
+  end
 
 
   def new
@@ -46,11 +48,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-  　@order = Orders.new(order_params)
-  　@cart_items=current_customer.cart_items
-　　@order.save
-　　current_customer.cart_items.destroy_all
-　　redirect_to public_complete_path
+    @order = Order.new(order_params)
+    @cart_items=current_customer.cart_items
+    # if @order.save
+    @order.save
+    current_customer.cart_items.destroy_all
+    redirect_to public_complete_path
+  # 現在ログインしているカスタマーのカーとアイテムこれを.eachのまえに持ってくる
+
   end
 
 

@@ -18,8 +18,8 @@
         <tr>
           <td><%= order.updated_at %></td>
           <td><%= order.address %></td>
-          <td><%= order.item.name %></td>
-          <td><%= oder.total %></td>
+          <td><%= order.name %></td>
+          <td><%#= order.total %></td>
           <td><%= order.status %></td>
           <td><%= link_to '表示する', public_order_path(order),class: 'btn btn-default' %></td>
         </tr>
