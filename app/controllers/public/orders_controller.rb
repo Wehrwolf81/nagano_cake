@@ -48,14 +48,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @cart_items=current_customer.cart_items
-    # if @order.save
-    @order.save
-    current_customer.cart_items.destroy_all
+    if @order.save
+      cart_items.each do |cart|
+        order_detail = OrderDetail.new
+        order_detail.item_id = @cart_items_id
+        order_detail.order_amount = cart_item.amount
+        order_detail.order_price = cart_item.price
+        order.save
+    end    
     redirect_to public_complete_path
+    current_customer.cart_items.destroy_all
+    else
+    @order = Order.new(order_params)
+    render :new
   # 現在ログインしているカスタマーのカーとアイテムこれを.eachのまえに持ってくる
-
+    end
   end
 
 
