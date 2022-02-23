@@ -20,7 +20,7 @@
           <% end %>
         <tr>
           <td>
-           <%= link_to order.created_at,admin_order_path(customer.id) %>
+           <%= link_to order.created_at,admin_order_path(@customer.id) %>
           </td>
           <td><%= order.name %></td>
           <td><%= count %></td>

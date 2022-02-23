@@ -1,12 +1,16 @@
 class Public::OrdersController < ApplicationController
 
   def index
+    # @order.shipping_cost = 800
     @orders=current_customer.orders.all
+    # @order_details = current_customer.order_detail.new(order_detail_params)
   end
 
   def show
+    # @order_detail = OrderDetail.new(order_details_params)
     @order=Order.find(params[:id])
     @cart_items=current_customer.cart_items
+    # @order_details=current_customer.order_details.all
 
   end
 
@@ -51,19 +55,20 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @cart_items=current_customer.cart_items
     if @order.save
-      cart_items.each do |cart|
-        order_detail = OrderDetail.new
-        order_detail.item_id = @cart_items_id
-        order_detail.order_amount = cart_item.amount
-        order_detail.order_price = cart_item.price
-        order.save
-    end    
-    redirect_to public_complete_path
-    current_customer.cart_items.destroy_all
+      @cart_items.each do |cart_item|
+        @order_detail = OrderDetail.new
+        @order_detail.order_id = @order.id
+        @order_detail.item_id = cart_item.item.id
+        @order_detail.amount = cart_item.amount
+        @order_detail.price = cart_item.item.price
+        @order_detail.save
+      end
+      redirect_to public_complete_path
+      current_customer.cart_items.destroy_all
     else
-    @order = Order.new(order_params)
-    render :new
-  # 現在ログインしているカスタマーのカーとアイテムこれを.eachのまえに持ってくる
+      @order = Order.new(order_params)
+      render :new
+
     end
   end
 
@@ -72,6 +77,9 @@ class Public::OrdersController < ApplicationController
 private
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+  end
+  def order_params
+    params.require(:order_detail).permit(:order_id, :item_id, :amount, :price)
   end
 
 end

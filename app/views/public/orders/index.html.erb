@@ -18,8 +18,17 @@
         <tr>
           <td><%= order.created_at %></td>
           <td><%= order.address %></td>
-          <td><%= order.order_details.item_id.name %></td>
-          <td><%= @total += order.shipping_cost %></td>
+          <td>
+              <% order.order_details.each do |order_detail| %>
+               <%= order_detail.item.name %>
+              <% end %>
+          </td>
+          <% order.cart_item.amount %>
+          <% ordercart_item.subtotal%>
+          <td><%= @total += order_detail.cart_item.subtotal %></td>
+
+
+          <td><%#= @total += order.shipping_cost %></td>
           <td><%= order.status %></td>
           <td><%= link_to '表示する', public_order_path(order),class: 'btn btn-default' %></td>
         </tr>
