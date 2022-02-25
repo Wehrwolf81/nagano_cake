@@ -23,9 +23,7 @@
                <%= order_detail.item.name %>
               <% end %>
           </td>
-          <% order.cart_item.amount %>
-          <% ordercart_item.subtotal%>
-          <td><%= @total += order_detail.cart_item.subtotal %></td>
+          <td><%#= @total += order_detail.cart_item.subtotal %></td>
 
 
           <td><%#= @total += order.shipping_cost %></td>

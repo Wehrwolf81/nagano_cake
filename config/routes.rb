@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   devise_for :customers
 
   namespace :public do
-    resources :homes
+
     root to:'homes#top'
     get'homes/about'=>'homes#about'
+    resources :homes
     resources :customers
     get '/customers/:id/comfirm' => 'customers#confirm', as: 'confirm'
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'

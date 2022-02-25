@@ -5,6 +5,6 @@ class Public::HomesController < ApplicationController
   end
 
   def about
-
+    # @item=Item.image_id
   end
 end
