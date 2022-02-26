@@ -14,15 +14,15 @@
         </thead>
         <tbody>
           <% @orders.each do |order| %>
-          <% @count=0 %>
-          <% order.order_details.each do |order_detail| %>
-          <% @count+=order_detail.amount %>
-          <% end %>
         <tr>
           <td>
            <%= link_to order.updated_at,admin_order_path(order.customer_id) %>
           </td>
           <td><%= order.name %></td>
+          <% @count=0 %>
+          <% order.order_details.each do |order_detail| %>
+          <% @count+=order_detail.amount %>
+          <% end %>
           <td><%= @count %></td>
           <td><%= order.status %></td>
         </tr>

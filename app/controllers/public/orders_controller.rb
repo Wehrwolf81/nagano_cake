@@ -5,13 +5,15 @@ class Public::OrdersController < ApplicationController
     @orders=current_customer.orders.all
     # @order_details = current_customer.order_detail.new(order_detail_params)
     @total = 0
+    
   end
 
   def show
     # @order_detail = OrderDetail.new(order_details_params)
     @order=Order.find(params[:id])
     # @cart_items=current_customer.cart_items
-    @order_details=current_customer.cart_items
+    @order_details=@order.order_details
+    @total = 0
 
     # @order_details=current_customer.order_details.all
 

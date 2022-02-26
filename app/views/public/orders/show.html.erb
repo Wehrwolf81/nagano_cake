@@ -1,4 +1,28 @@
 <h1>注文履歴詳細</h1>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+         <th>商品名</th>
+         <th>単価(税込)</th>
+         <th>個数</th>
+         <th>小計</th>
+        </tr>
+      </thead>
+
+    <tbody>
+      <% @order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.item.name%></td>
+          <td><%= order_detail.price%></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= @subtotal = order_detail.price*order_detail.amount %></td>
+          <% @total += @subtotal %>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+
+
 
  <div class="container">
   <div class="row">
@@ -21,9 +45,6 @@
            <td><%= @order.status%></td>
           </tr>
         <tbody>
-          <%# @orders.each do |order| %>
-
-          <%# end %>
         </tbody>
       </table>
     </div>
@@ -39,7 +60,7 @@
         </tr>
         <tr>
           <th>ご請求額</th>
-          <td><%#= @total += @order.shipping_cost %></td>
+          <td><%= @total += @order.shipping_cost %></td>
         </tr>
       </table>
       </div>
@@ -48,25 +69,3 @@
 
 
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-         <th>商品名</th>
-         <th>単価(税込)</th>
-         <th>個数</th>
-         <th>小計</th>
-        </tr>
-      </thead>
-
-    <tbody>
-      <% @order_details.each do |order_detail| %>
-        <tr>
-          <td><%= order_detail.item.name%></td>
-          <td><%= order_detail.item.price%></td>
-          <td><%= order_detail.amount %></td>
-          <td><%= order_detail.subtotal%></td>
-          <% @total += cart_item.subtotal %>
-        </tr>
-      <% end %>
-    </tbody>
-    </table>

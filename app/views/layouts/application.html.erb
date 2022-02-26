@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
-
+    <script src="https://kit.fontawesome.com/cd4c0280a3.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -24,7 +25,6 @@
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
               <%= link_to 'マイページ',public_customer_path(current_customer) %>
-              <%#= link_to '会員一覧 ', customers_path %>
               <%= link_to '商品一覧', public_items_path %>
               <%= link_to 'カート', public_cart_items_path %>
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
