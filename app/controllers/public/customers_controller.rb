@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     logger.debug(@customer.inspect)
     if @customer.update!(customer_params)
-    redirect_to public_customer_path(@customer.id),notice:'You have updeted user successfully.'
+    redirect_to public_customer_path(@customer.id)
     else
     flash.now[:alert]='update error'
     render :edit
@@ -29,6 +29,15 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to public_root_path
   end
+
+   def reject_inactive_customer
+    @customer = Customer.find_by(name: params[:customer][:last_name])
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && !@customer.is_valid
+        redirect_to public_root_path
+      end
+    end
+   end
 
 
   private
