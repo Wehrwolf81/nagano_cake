@@ -19,12 +19,13 @@
            <%= link_to order.updated_at,admin_order_path(order) %>
           </td>
           <td><%= order.name %></td>
-          <% @count=0 %>
+
           <% order.order_details.each do |order_detail| %>
+          <% @count=0 %>
           <% @count+=order_detail.amount %>
           <% end %>
           <td><%= @count %></td>
-          <td><%= order.status %></td>
+          <td><%= order.status_i18n %></td>
         </tr>
         <% end %>
       </tbody>
