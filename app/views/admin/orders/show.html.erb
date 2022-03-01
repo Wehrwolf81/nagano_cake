@@ -1,17 +1,40 @@
 <h1>注文履歴詳細</h1>
-  <% form_for @order,url: admin_order_path(@order) do |f| %>
-    <p>購入者<%#= @order.customer_id.full_name %></p>
-    <p>注文日<%= @order.created_at %></p>
-    <p>配送先<%= @order.address %></p>
-    <p>支払方法<%= @order.payment_method %></p>
-    <p>注文ステータス
-      <%= form_for @order,url: admin_order_path(@order) do |f| %>
-      <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
-      <%= f.submit "更新"%>
-      <% end %>
-    </p>
-    <%#= order.status %>
-  <% end %>
+
+ <div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <table class="table table-striped">
+        　<tr>
+            <th>購入者</th>
+            <td><%#= @order.customer_id.last_name+first_name %></td>
+          </tr>
+        　<tr>
+            <th>注文日</th>
+            <td><%= @order.updated_at %></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td><%= @order.address%></td>
+          </tr>
+          <tr>
+           <th>支払方法</th>
+           <td><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+           <th>ステータス</th>
+           <td><%#= @order.status_i18n%>
+            <%= form_for @order,url: admin_order_path(@order) do |f| %>
+            <%= f.select :status_i18n, Order.statuses_i18n %>
+            <%= f.submit "更新"%>
+            <% end %>
+           </td>
+          </tr>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 
 
@@ -35,11 +58,15 @@
           <td><%= order_detail.amount %></td>
           <td><%= @subtotal = order_detail.price*order_detail.amount %></td>
           <% @total += @subtotal %>
-          <%= form_for @order,url: admin_order_path(@order) do |f| %>
-          <%= f.select :making_status, Order.statuses.keys %>
-          .map {|k| [I18n.t("enums.order.status.#{k}"), k]}
+          <%#= form_for @order,url: admin_order_path(@order) do |f| %>
+          <%#= f.select :status, Order.statuses.keys %>
+
           <%#= f.select :making_status, options_for_select_from_enum(OrderDetail, :making_status) %>
-          <%= f.submit "更新" %>
+          <%#= f.submit "更新" %>
+          <%# end %>
+          <%= form_for order_detail,url: admin_order_path(@order) do |f| %>
+          <%= f.select :making_status, order_detail.making_status.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+          <%= f.submit "更新"%>
           <% end %>
           </td>
 

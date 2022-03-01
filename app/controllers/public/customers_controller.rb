@@ -30,14 +30,7 @@ class Public::CustomersController < ApplicationController
     redirect_to public_root_path
   end
 
-   def reject_inactive_customer
-    @customer = Customer.find_by(name: params[:customer][:last_name])
-    if @customer
-      if @customer.valid_password?(params[:customer][:password]) && !@customer.is_valid
-        redirect_to public_root_path
-      end
-    end
-   end
+
 
 
   private

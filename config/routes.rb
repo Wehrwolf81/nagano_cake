@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
 
-  devise_for :customers
+  devise_for :customers,controllers: {
+    sessions: 'customers/sessions'
+  }
 
   namespace :public do
 
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
     resources :genres
     resources :items
     resources :orders
+    post'/orders/update_order_status' =>'order#update_order_status',as: 'order_status'
   end
 
 
