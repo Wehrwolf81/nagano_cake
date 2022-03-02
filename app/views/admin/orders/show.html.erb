@@ -6,7 +6,7 @@
       <table class="table table-striped">
         　<tr>
             <th>購入者</th>
-            <td><%#= @order.customer_id.last_name+first_name %></td>
+            <td><%= @order.customer.last_name+@order.customer.first_name %></td>
           </tr>
         　<tr>
             <th>注文日</th>
@@ -24,7 +24,9 @@
            <th>ステータス</th>
            <td><%#= @order.status_i18n%>
             <%= form_for @order,url: admin_order_path(@order) do |f| %>
-            <%= f.select :status_i18n, Order.statuses_i18n %>
+            <%= f.select  :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+
+            <%#= f.select :status, Order.statuses_i18n %>
             <%= f.submit "更新"%>
             <% end %>
            </td>
@@ -64,8 +66,11 @@
           <%#= f.select :making_status, options_for_select_from_enum(OrderDetail, :making_status) %>
           <%#= f.submit "更新" %>
           <%# end %>
-          <%= form_for order_detail,url: admin_order_path(@order) do |f| %>
-          <%= f.select :making_status, order_detail.making_status.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+          <td>
+          <%= form_for order_detail,url: admin_order_detail_path(@order_detail) do |f| %>
+          <%#= f.select :making_status, OrderDetail.making_statuses_i18n %>
+          <%= f.select  :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+
           <%= f.submit "更新"%>
           <% end %>
           </td>

@@ -32,8 +32,10 @@ Rails.application.routes.draw do
     resources :customers
     resources :genres
     resources :items
-    resources :orders
-    post'/orders/update_order_status' =>'order#update_order_status',as: 'order_status'
+    resources :orders  , only: [:show, :update]
+    resources :order_details  , only: [:update]
+    # post'/orders/update_order_status' =>'order#update_order_status',as: 'order_status'
+    # post'/orders/update_making_status' =>'order#update_making_status',as: 'order_making_status'
   end
 
 
