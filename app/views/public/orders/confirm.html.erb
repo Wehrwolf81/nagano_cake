@@ -33,7 +33,7 @@
     </div>
     <p>支払方法<%= @order.payment_method_i18n %></p>
     <p>お届け先<%= @order.address %></p>
-    <%= form_for @order, url: public_orders_path do |f| %>
+    <%= form_for @order, url: orders_path do |f| %>
       <%= f.hidden_field :payment_method, value: @order.payment_method %>
       <%= f.hidden_field :address, value: @order.address %>
       <%= f.hidden_field :status, value: "waiting_for_deposit" %>

@@ -18,8 +18,8 @@
       </table>
     </div>
     <div class="col-md-9">
-      <%= form_for(@cart_item, url: public_cart_items_path) do |f| %>
-        <%= attachment_image_tag @item, :image_id, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <%= form_for(@cart_item, url: cart_items_path) do |f| %>
+        <%= attachment_image_tag @item, :image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
         <strong><%= @item.name %></strong>
         <%= @item.introduction%>
         <%= @item.price %>

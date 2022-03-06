@@ -1,4 +1,4 @@
-class Public::ItemsController < ApplicationController
+class ItemsController < ApplicationController
   def index
     @genres=Genre.all
     @items=Item.page(params[:page]).reverse_order.per(8)
@@ -8,6 +8,7 @@ class Public::ItemsController < ApplicationController
     @cart_item=CartItem.new
     @genres=Genre.all
     @item=Item.find(params[:id])
+    # @item=Item.find(params[:id])
 
   end
 

@@ -4,6 +4,7 @@
   <div class="form-control-file user_image">
     <label for="inputImage">商品画像</label>
     <%= f.attachment_field :image %>
+    <%#= f.attachment_field @new_item, :image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
   </div>
   <h4>商品名</h4>
   <%= f.text_field :name,include_blank: "商品名"  %>

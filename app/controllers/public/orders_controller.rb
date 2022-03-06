@@ -1,11 +1,11 @@
-class Public::OrdersController < ApplicationController
+class OrdersController < ApplicationController
 
   def index
     # @order.shipping_cost = 800
     @orders=current_customer.orders.all
     # @order_details = current_customer.order_detail.new(order_detail_params)
     @total = 0
-    
+
   end
 
   def show
@@ -68,7 +68,7 @@ class Public::OrdersController < ApplicationController
         @order_detail.price = cart_item.item.price
         @order_detail.save
       end
-      redirect_to public_complete_path
+      redirect_to complete_path
       current_customer.cart_items.destroy_all
     else
       @order = Order.new(order_params)

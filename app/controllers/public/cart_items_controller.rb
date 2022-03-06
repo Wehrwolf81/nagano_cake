@@ -1,7 +1,8 @@
-class Public::CartItemsController < ApplicationController
+class CartItemsController < ApplicationController
   def index
     @cart_items=current_customer.cart_items.all
     @totalpayment=0
+    @total=0
   end
 
   def create
@@ -16,7 +17,7 @@ class Public::CartItemsController < ApplicationController
       # flash[:notice] = "商品の個数が変更されました！"
       # ,notice:'商品が追加されました'
     end
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
   end
 
   # def update
@@ -32,7 +33,7 @@ class Public::CartItemsController < ApplicationController
    def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-      redirect_to public_cart_items_path
+      redirect_to cart_items_path
     else
       render :index
     end
@@ -41,13 +42,13 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item=CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
   end
 
   def all_destroy
     @cart_items=CartItem.all
     @cart_items.destroy_all
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
   end
 end
 

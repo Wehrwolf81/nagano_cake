@@ -1,4 +1,4 @@
-class Public::CustomersController < ApplicationController
+class CustomersController < ApplicationController
   def show
     @customer=current_customer
   end
@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     logger.debug(@customer.inspect)
     if @customer.update!(customer_params)
-    redirect_to public_customer_path(@customer.id)
+    redirect_to customer_path(@customer.id)
     else
     flash.now[:alert]='update error'
     render :edit
@@ -27,7 +27,7 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to public_root_path
+    redirect_to root_path
   end
 
 

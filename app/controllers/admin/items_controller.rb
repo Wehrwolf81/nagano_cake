@@ -22,11 +22,13 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item =Item.find(params[:id])
+
   end
 
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
+      # binding.pry
     redirect_to admin_item_path(@item.id)
     flash.now[:alert]='update error'
     else
@@ -38,5 +40,5 @@ end
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :genre_id, :price, :is_active)
+    params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_active)
   end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     sessions: 'customers/sessions'
   }
 
-  namespace :public do
+  # namespace :public do
 
     root to:'homes#top'
     get'homes/about'=>'homes#about'
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :items
     resources :cart_items
     delete '/cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
-  end
+  # end
 
   namespace :admin do
     resources :homes
