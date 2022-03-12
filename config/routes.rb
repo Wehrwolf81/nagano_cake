@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
   # namespace :public do
-
+  scope module: :public do
     root to:'homes#top'
     get'homes/about'=>'homes#about'
     resources :homes
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :items
     resources :cart_items
     delete '/cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
-  # end
+  end
 
   namespace :admin do
     resources :homes

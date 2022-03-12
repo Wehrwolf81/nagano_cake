@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Public::OrdersController < ApplicationController
 
   def index
     # @order.shipping_cost = 800
@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
         @order_detail.order_id = @order.id
         @order_detail.item_id = cart_item.item.id
         @order_detail.amount = cart_item.amount
-        @order_detail.price = cart_item.item.price
+        @order_detail.price = cart_item.item.price * 1.1
         @order_detail.save
       end
       redirect_to complete_path

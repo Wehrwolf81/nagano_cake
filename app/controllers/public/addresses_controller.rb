@@ -1,4 +1,4 @@
-class AddressesController < ApplicationController
+class Public::AddressesController < ApplicationController
   def index
     @new_address=Address.new
     @addresses=current_customer.addresses.all
