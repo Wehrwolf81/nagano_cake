@@ -23,6 +23,7 @@ class Admin::OrdersController < ApplicationController
     else
       render :show
     end
+    @order.update(order_params)
   end
 
   # def update
